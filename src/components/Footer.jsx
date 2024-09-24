@@ -6,7 +6,7 @@ const Footer = () => {
     <Flex
       align="center"
       justify="space-between"
-      w="full"
+      w="99vw"
       color="#fff"
       bg="#000"
       p="4"

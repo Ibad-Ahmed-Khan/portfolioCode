@@ -69,7 +69,7 @@ const Project = () => {
       transition={{ ease: "easeInOut", duration: 2 }}
     >
       <Flex
-        pt="2rem"
+        pt="5rem"
         pb="5rem"
         flexDirection="column"
         justify="center"

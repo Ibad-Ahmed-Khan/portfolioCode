@@ -18,9 +18,6 @@ import {
   FaCss3Alt,
   FaJsSquare,
   FaReact,
-  FaNodeJs,
-  FaHandPointRight,
-  FaHandPaper,
 } from "react-icons/fa";
 import { SiTailwindcss, SiChakraui } from "react-icons/si";
 import { BiCube } from "react-icons/bi";
@@ -28,6 +25,7 @@ import HomeImg from "../components/HomeImg";
 import About from "./About";
 import Project from "./Project";
 import Contact from "./Contact";
+import Courses from "../components/Courses";
 
 const Home = () => {
   return (
@@ -36,7 +34,7 @@ const Home = () => {
       animate={{ opacity: 1 }}
       transition={{ ease: "easeInOut", duration: 2 }}
     >
-      <Box p={{ base: "4", md: "8" }}>
+      <Box pt="5rem">
         <VStack
           align="start"
           justify="center"
@@ -172,28 +170,16 @@ const Home = () => {
             </Flex>
           </Flex>
         </VStack>
-        <Flex
-          align="center"
-          justify="center"
-          minH="100vh"
-          p={{ base: "4", md: "8" }}
-        >
+        <Flex align="center" justify="center" minH="100vh">
           <About />
         </Flex>
-        <Flex
-          align="center"
-          justify="center"
-          minH="100vh"
-          p={{ base: "4", md: "8" }}
-        >
+        <Flex align="center" justify="center" minH="100vh">
           <Project />
         </Flex>
-        <Flex
-          align="center"
-          justify="center"
-          minH="100vh"
-          p={{ base: "4", md: "8" }}
-        >
+        <Flex align="center" justify="center" minH="100vh">
+          <Courses />
+        </Flex>
+        <Flex align="center" justify="center" minH="100vh">
           <Contact />
         </Flex>
       </Box>

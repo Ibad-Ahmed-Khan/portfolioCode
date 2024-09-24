@@ -9,6 +9,7 @@ const Header = () => {
     { link: "home", to: "/" },
     { link: "about", to: "about" },
     { link: "project", to: "project" },
+    { link: "courses", to: "courses" },
     { link: "contact", to: "contact" },
   ];
 
@@ -20,7 +21,7 @@ const Header = () => {
 
   return (
     <SimpleGrid
-      pos="sticky"
+      pos="fixed"
       top="0"
       zIndex="9999"
       bg="#fff"
@@ -37,13 +38,9 @@ const Header = () => {
               fontWeight: "400",
               letterSpacing: "1px",
             }}
-            // as={ScrollLink}
-            // to="home"
-            // smooth={true}
             fontSize="1rem"
-          >
-            Ibad Ahmed.dev
-          </Text>
+          ></Text>
+          Ibad Ahmed.dev
         </RouterLink>
         {/* Desktop version  */}
       </Flex>
