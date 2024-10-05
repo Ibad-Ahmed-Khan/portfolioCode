@@ -1,0 +1,12 @@
+.link {
+  border: 2px solid;
+  border-radius: 1rem;
+  padding: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.link:hover {
+  border: 2px solid red;
+  background: #000;
+  color: #fff;
+}

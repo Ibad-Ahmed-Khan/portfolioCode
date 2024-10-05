@@ -17,26 +17,15 @@ import { motion } from "framer-motion";
 const Project = () => {
   const projectList = [
     {
-      projectName: "FoodPanda",
-      summary:
-        "Developed a user-friendly web interface for an online food delivery platform. Integrated real-time order tracking, payment processing, and an intuitive menu browsing experience to enhance customer satisfaction.",
-      text: "Built using React, Chakra UI, and Firebase for seamless user interaction and real-time database management.",
-      sticker:
-        "https://cdn.vectorstock.com/i/1000v/21/00/cute-panda-crawling-on-bamboo-tree-vector-50482100.avif",
-      img: FoodPanda,
-      liveDemo: "https://ibadahmedkhan222222.pages.dev/",
-      codelink: "https://github.com/Ibad-Ahmed-Khan/food",
-    },
-    {
       projectName: "Ecommerce",
       summary:
-        "Created a dynamic and responsive e-commerce website with a focus on usability and performance. Implemented features like product search, filtering, and a secure checkout process.",
+        "Built a responsive e-commerce website using Zustand for global state management, featuring product selection, detailed views, and dynamic stock-based counters with alerts. Integrated a responsive cart displaying images, prices, subtotals, and a total with a checkout option. Users can view multiple product images and related items, with smooth UI/UX designs.",
       text: "Technologies used include React, Redux, and Stripe API for payment processing.",
       img: Ecommerce,
       sticker:
         "https://cdn.vectorstock.com/i/1000x1000/73/70/ecommerce-in-smartphone-vector-45247370.webp",
-      liveDemo: "https://ibadahmedkhanecommerce.pages.dev/",
-      codelink: "https://github.com/Ibad-Ahmed-Khan/Ecommerce",
+      liveDemo: "https://ecomemrce.pages.dev/",
+      codelink: "https://github.com/Ibad-Ahmed-Khan/redEcomemrce",
     },
     {
       projectName: "Crypto",
@@ -49,6 +38,18 @@ const Project = () => {
       liveDemo: "https://crypto-9z7.pages.dev/",
       codelink: "https://github.com/Ibad-Ahmed-Khan/crypto",
     },
+    {
+      projectName: "FoodPanda",
+      summary:
+        "Developed a user-friendly web interface for an online food delivery platform. Integrated real-time order tracking, payment processing, and an intuitive menu browsing experience to enhance customer satisfaction.",
+      text: "Built using React, Chakra UI, and Firebase for seamless user interaction and real-time database management.",
+      sticker:
+        "https://cdn.vectorstock.com/i/1000v/21/00/cute-panda-crawling-on-bamboo-tree-vector-50482100.avif",
+      img: FoodPanda,
+      liveDemo: "https://ibadahmedkhan222222.pages.dev/",
+      codelink: "https://github.com/Ibad-Ahmed-Khan/food",
+    },
+
     {
       projectName: "Advance Work",
       summary:
@@ -113,7 +114,6 @@ const Project = () => {
           >
             <Flex
               w="20rem"
-              h="20rem"
               textAlign="center"
               flexDirection="column"
               align="center"
@@ -155,8 +155,12 @@ const Project = () => {
               </Heading>
               <Text color="gray"> {project.summary} </Text>
               <Flex align="center" justify="center" gap="2rem">
-                <RouterLink to={project.codelink}>Code</RouterLink>
-                <RouterLink to={project.liveDemo}>Live demo</RouterLink>
+                <RouterLink target="_blank" to={project.codelink}>
+                  Code
+                </RouterLink>
+                <RouterLink target="_blank" to={project.liveDemo}>
+                  Live demo
+                </RouterLink>
               </Flex>
             </Flex>
             <RouterLink to={project.liveDemo}>

@@ -26,8 +26,33 @@ import About from "./About";
 import Project from "./Project";
 import Contact from "./Contact";
 import Courses from "../components/Courses";
+import { useEffect, useState } from "react";
 
 const Home = () => {
+  const [percentage, setPercentage] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY; // Current scroll position from the top
+      const windowHeight = window.innerHeight; // Height of the viewport
+      const documentHeight = document.documentElement.scrollHeight; // Total height of the document
+
+      // Calculate the percentage of the document that has been scrolled
+      const totalScrollableHeight = documentHeight - windowHeight; // Total height available to scroll
+      const newPercentage = (scrollTop / totalScrollableHeight) * 100;
+
+      // Set the rounded percentage
+      setPercentage(Math.round(newPercentage));
+      console.log(Math.round(newPercentage)); // Log the rounded percentage
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Cleanup function to remove the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -35,6 +60,17 @@ const Home = () => {
       transition={{ ease: "easeInOut", duration: 2 }}
     >
       <Box pt="5rem">
+        <Box
+          pos="fixed"
+          top="0"
+          left="0"
+          zIndex="9999999999999999999999999"
+          bg="#000"
+          w={`${percentage}%`}
+          h="4px"
+          boxShadow="0 2px 5px rgba(0, 0, 0, 0.3)"
+          transition="all .3s ease-in-out"
+        />
         <VStack
           align="start"
           justify="center"

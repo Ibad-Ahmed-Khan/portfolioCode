@@ -4,6 +4,7 @@ import {
   Heading,
   Image,
   Img,
+  Link,
   SimpleGrid,
   Text,
 } from "@chakra-ui/react";
@@ -31,7 +32,7 @@ const Courses = () => {
       text: "This course provided a solid foundation for web development using HTML.",
       img: HtmlCourse,
       sticker: <FaHtml5 color="#E44D26" />,
-      liveDemo: "#", // Placeholder if there is no live demo
+      link: "https://www.mygreatlearning.com/certificate/YYWPDUAF", // Placeholder if there is no live demo
       codelink: "#", // Placeholder if there is no code link
     },
     {
@@ -41,7 +42,7 @@ const Courses = () => {
       text: "This course enhanced my skills in CSS for better web design.",
       img: CssCourse,
       sticker: <FaCss3Alt color="#1572B6" />,
-      liveDemo: "#", // Placeholder if there is no live demo
+      link: "https://www.mygreatlearning.com/certificate/COERGFWN", // Placeholder if there is no live demo
       codelink: "#", // Placeholder if there is no code link
     },
     {
@@ -51,10 +52,10 @@ const Courses = () => {
       text: "This course helped me develop professional resumes to enhance my job applications.",
       img: ResumeCourse,
       sticker: <FaFileAlt color="#7A7A7A" />,
-      liveDemo: "#", // Placeholder if there is no live demo
+      link: "https://www.coursera.org/account/accomplishments/verify/YO53N14PRNOF", // Placeholder if there is no live demo
       codelink: "#", // Placeholder if there is no code link
     },
-    // Existing projects can be added here if needed
+    // Existing courses can be added here if needed
   ];
 
   return (
@@ -92,7 +93,7 @@ const Courses = () => {
         >
           Every course offers valuable insights for your journey in tech.
         </Text>
-        {coursesList.map((project, index) => (
+        {coursesList.map((course, index) => (
           <Flex
             key={index}
             align="center"
@@ -125,19 +126,23 @@ const Courses = () => {
                   fontSize="1.3rem"
                   textTransform="uppercase"
                 >
-                  {project.coursesName}
+                  {course.coursesName}
                 </Heading>
-                <Box fontSize="2rem">{project.sticker}</Box>
+                <Box fontSize="2rem">{course.sticker}</Box>
               </Flex>
-              <Text color="gray"> {project.summary} </Text>
-              <Flex align="center" justify="center" gap="2rem">
-                <RouterLink to={project.codelink}>Code</RouterLink>
-                <RouterLink to={project.liveDemo}>Live demo</RouterLink>
-              </Flex>
+              <Text color="gray"> {course.summary} </Text>
+              <Link
+                to={course.liveDemo} // Use this for internal links (if applicable)
+                href={course.link} // External link
+                target="_blank" // Optional: Opens in a new tab
+                rel="noopener noreferrer" // Recommended for security reasons
+              >
+                Verify me
+              </Link>
             </Flex>
-            <RouterLink to={project.liveDemo}>
+            <RouterLink to={course.liveDemo}>
               <Image
-                src={project.img}
+                src={course.img}
                 w="22rem"
                 objectFit="contain"
                 boxShadow="xl"

@@ -29,7 +29,7 @@ const About = () => {
         w="full"
         h="full"
         gap="3rem"
-        pt="2rem"
+        pt="5rem"
         pb="2rem"
         flexDirection={{
           base: "column-reverse",

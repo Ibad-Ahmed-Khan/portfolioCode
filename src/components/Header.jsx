@@ -1,22 +1,28 @@
-import { Box, CloseButton, Flex, SimpleGrid, Text } from "@chakra-ui/react";
+import { Box, Flex, SimpleGrid, Text } from "@chakra-ui/react";
 import { useState } from "react";
 import { FaHamburger, FaWindowClose } from "react-icons/fa";
 import { Link as RouterLink } from "react-router-dom";
-// import { ScrollLink } from "react-scroll";
 
 const Header = () => {
   const links = [
     { link: "home", to: "/" },
-    { link: "about", to: "about" },
-    { link: "project", to: "project" },
-    { link: "courses", to: "courses" },
-    { link: "contact", to: "contact" },
+    { link: "about", to: "/about" },
+    { link: "project", to: "/project" },
+    { link: "courses", to: "/courses" },
+    { link: "contact", to: "/contact" },
   ];
 
-  const [isOpen, setIsOpen] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleHamburger = () => {
     setIsOpen(!isOpen);
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // Adds smooth scrolling
+    });
   };
 
   return (
@@ -38,12 +44,15 @@ const Header = () => {
               fontWeight: "400",
               letterSpacing: "1px",
             }}
+            onClick={scrollToTop}
             fontSize="1rem"
-          ></Text>
-          Ibad Ahmed.dev
+          >
+            Ibad Ahmed.dev
+          </Text>
         </RouterLink>
-        {/* Desktop version  */}
       </Flex>
+
+      {/* Desktop version */}
       <Flex
         display={{ base: "none", md: "none", lg: "flex", xl: "flex" }}
         align="center"
@@ -53,7 +62,7 @@ const Header = () => {
         <Flex w="50%" align="center" justify="space-between">
           {links.map((item, index) => {
             return (
-              <RouterLink key={index} to={item.to}>
+              <RouterLink onClick={scrollToTop} key={index} to={item.to}>
                 {item.link}
               </RouterLink>
             );
@@ -69,7 +78,7 @@ const Header = () => {
         textTransform="capitalize"
       >
         <FaHamburger
-          onClick={() => handleHamburger()}
+          onClick={handleHamburger}
           fontSize="1.7rem"
           cursor="pointer"
         />
@@ -89,7 +98,7 @@ const Header = () => {
       >
         <Flex textTransform="capitalize" align="center" justify="end" p="3">
           <FaWindowClose
-            onClick={() => handleHamburger()}
+            onClick={handleHamburger}
             fontSize="1.7rem"
             color="red"
             cursor="pointer"
@@ -106,7 +115,10 @@ const Header = () => {
           {links.map((item, index) => {
             return (
               <RouterLink
-                onClick={() => handleHamburger()}
+                onClick={() => {
+                  handleHamburger();
+                  scrollToTop();
+                }}
                 key={index}
                 to={item.to}
               >
