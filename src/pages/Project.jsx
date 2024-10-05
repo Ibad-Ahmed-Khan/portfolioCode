@@ -19,7 +19,7 @@ const Project = () => {
     {
       projectName: "Ecommerce",
       summary:
-        "Built a responsive e-commerce website using Zustand for global state management, featuring product selection, detailed views, and dynamic stock-based counters with alerts. Integrated a responsive cart displaying images, prices, subtotals, and a total with a checkout option. Users can view multiple product images and related items, with smooth UI/UX designs.",
+        "Developed a dynamic and responsive e-commerce website utilizing Zustand for global state management, featuring seamless product selection and detailed views with stock-based counters and alerts. Integrated a fully responsive cart page, and a total with a checkout option. All product data is stored in local storage, ensuring persistence after reloads. Enhanced user experience with multiple product images, related items, and polished UI/UX designs, making the site not only functional but user-friendly.",
       text: "Technologies used include React, Redux, and Stripe API for payment processing.",
       img: Ecommerce,
       sticker:
