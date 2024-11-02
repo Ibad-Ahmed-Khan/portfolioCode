@@ -1,5 +1,7 @@
 import { VStack, Box, keyframes, Image } from "@chakra-ui/react";
 import Ibad from "../assets/Courses Imgs/ibad.jpg";
+import useStore from "../Zustand";
+// import useStore from "../Zustand";
 
 const crazyAnimateBox = keyframes`
   0%, 100% {  
@@ -22,11 +24,13 @@ const crazyAnimateBox = keyframes`
   }
 `;
 
+// const { count } = useStore();
+
 function HomeImg() {
   return (
     <Image
-      boxShadow="2xl"
-      border="1px solid"
+      boxShadow="0 2px 5px #fff"
+      border="1px solid #000"
       animation={`${crazyAnimateBox} 12s ease-in-out infinite`}
       w="14rem"
       h="14rem"

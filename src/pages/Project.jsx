@@ -13,6 +13,7 @@ import Crypto from "../assets/crypto.png";
 import AdvanceWork from "../assets/advanceWork.png";
 import { Link as RouterLink } from "react-router-dom";
 import { motion } from "framer-motion";
+import { FaShoppingCart, FaBitcoin, FaUtensils, FaTasks } from "react-icons/fa"; // Import React Icons
 
 const Project = () => {
   const projectList = [
@@ -21,9 +22,8 @@ const Project = () => {
       summary:
         "Developed a dynamic and responsive e-commerce website utilizing Zustand for global state management, featuring seamless product selection and detailed views with stock-based counters and alerts. Integrated a fully responsive cart page, and a total with a checkout option. All product data is stored in local storage, ensuring persistence after reloads. Enhanced user experience with multiple product images, related items, and polished UI/UX designs, making the site not only functional but user-friendly.",
       text: "Technologies used include React, Redux, and Stripe API for payment processing.",
-      img: Ecommerce,
-      sticker:
-        "https://cdn.vectorstock.com/i/1000x1000/73/70/ecommerce-in-smartphone-vector-45247370.webp",
+      img: Ecommerce, // Keep your original image
+      sticker: <FaShoppingCart size={24} style={{ color: "#ff7f50" }} />, // Use a coral color for the sticker
       liveDemo: "https://ecomemrce.pages.dev/",
       codelink: "https://github.com/Ibad-Ahmed-Khan/redEcomemrce",
     },
@@ -32,9 +32,8 @@ const Project = () => {
       summary:
         "Designed and developed a cryptocurrency dashboard that provides real-time data on market trends, price charts, and portfolio management. Integrated multiple APIs to fetch up-to-date financial data.",
       text: "Utilized React, Chart.js, and various cryptocurrency APIs to build a comprehensive market analysis tool.",
-      img: Crypto,
-      sticker:
-        "https://cdn.vectorstock.com/i/1000x1000/48/35/realistic-golden-bitcoin-vector-21474835.webp",
+      img: Crypto, // Keep your original image
+      sticker: <FaBitcoin size={24} style={{ color: "#ffd700" }} />, // Use a gold color for the sticker
       liveDemo: "https://crypto-9z7.pages.dev/",
       codelink: "https://github.com/Ibad-Ahmed-Khan/crypto",
     },
@@ -43,21 +42,18 @@ const Project = () => {
       summary:
         "Developed a user-friendly web interface for an online food delivery platform. Integrated real-time order tracking, payment processing, and an intuitive menu browsing experience to enhance customer satisfaction.",
       text: "Built using React, Chakra UI, and Firebase for seamless user interaction and real-time database management.",
-      sticker:
-        "https://cdn.vectorstock.com/i/1000v/21/00/cute-panda-crawling-on-bamboo-tree-vector-50482100.avif",
-      img: FoodPanda,
+      img: FoodPanda, // Keep your original image
+      sticker: <FaUtensils size={24} style={{ color: "#4caf50" }} />, // Use a green color for the sticker
       liveDemo: "https://ibadahmedkhan222222.pages.dev/",
       codelink: "https://github.com/Ibad-Ahmed-Khan/food",
     },
-
     {
       projectName: "Advance Work",
       summary:
         "Engineered an advanced task management application that allows teams to collaborate efficiently. Features include task assignment, progress tracking, and automated reminders.",
       text: "This project was developed using React, Node.js, and MongoDB for a full-stack solution.",
-      img: AdvanceWork,
-      sticker:
-        "https://cdn.vectorstock.com/i/1000v/06/73/handshake-abstract-vector-790673.avif",
+      img: AdvanceWork, // Keep your original image
+      sticker: <FaTasks size={24} style={{ color: "#2196f3" }} />, // Use a blue color for the sticker
       liveDemo: "https://allllllcomponents.pages.dev/",
       codelink: "https://github.com/Ibad-Ahmed-Khan/components",
     },
@@ -74,37 +70,44 @@ const Project = () => {
         pb="5rem"
         flexDirection="column"
         justify="center"
+        gap="6rem"
         align={{ base: "center", md: "center", lg: "start", xl: "start" }}
       >
-        <Text
-          style={{
-            fontFamily: "Anton, sans-serif",
-            fontWeight: "400",
-            letterSpacing: "1px",
-          }}
-          textTransform="uppercase"
-          color="blue.300"
-        >
-          Portfolio
-        </Text>
-        <Text
-          fontSize="1.2rem"
-          textAlign={{ base: "center", md: "center", lg: "start", xl: "start" }}
-          style={{
-            fontFamily: "Anton, sans-serif",
-            fontWeight: "400",
-            letterSpacing: "0.5px",
-          }}
-        >
-          Each project is a unique piece of development.
-        </Text>
+        <Flex flexDir="column" align={{ base: "center", lg: "start" }}>
+          <Text
+            style={{
+              fontFamily: "Anton, sans-serif",
+              fontWeight: "400",
+              letterSpacing: "1px",
+            }}
+            textTransform="uppercase"
+            color="blue.300"
+          >
+            Portfolio
+          </Text>
+          <Text
+            fontSize="1.2rem"
+            textAlign={{
+              base: "center",
+              md: "center",
+              lg: "start",
+              xl: "start",
+            }}
+            style={{
+              fontFamily: "Anton, sans-serif",
+              fontWeight: "400",
+              letterSpacing: "0.5px",
+            }}
+          >
+            Each project is a unique piece of development.
+          </Text>
+        </Flex>
         {projectList.map((project, index) => (
           <Flex
             key={index}
             align="center"
             justify="center"
-            transition="all .4s ease-in-out"
-            gap="2rem"
+            gap={{ base: "1rem", lg: "3rem" }}
             flexDirection={{
               base: "column",
               md: "column",
@@ -118,41 +121,22 @@ const Project = () => {
               flexDirection="column"
               align="center"
               justify="center"
-              gap="2rem"
+              gap="1rem"
             >
-              <Heading
+              <Flex
+                align="center"
+                justify="center"
                 style={{
                   fontFamily: "Anton, sans-serif",
                   fontWeight: "400",
                   letterSpacing: "1px",
                 }}
-                fontSize="1.3rem"
+                fontSize="1.2rem"
                 textTransform="uppercase"
               >
                 {project.projectName}
-                <Flex
-                  display="inline"
-                  align="center"
-                  justify="center"
-                  position="relative"
-                  top="0.6rem"
-                >
-                  <Img
-                    display="inline"
-                    w="2rem"
-                    src={project.sticker}
-                    alt="Waving Hand Icon"
-                  />
-                  <Box
-                    position="absolute"
-                    bottom="0"
-                    left="0"
-                    right="0"
-                    height="1rem" // Adjust height to cover the unwanted line
-                    backgroundColor="white" // Match this to your background color to hide the line
-                  />
-                </Flex>
-              </Heading>
+                <Box ml={2}>{project.sticker}</Box>
+              </Flex>
               <Text color="gray"> {project.summary} </Text>
               <Flex align="center" justify="center" gap="2rem">
                 <RouterLink target="_blank" to={project.codelink}>

@@ -46,7 +46,7 @@ const Contact = () => {
               lg: "row",
               xl: "row",
             }}
-            w="full"
+            // w="full"
             gap="1rem"
           >
             <Flex

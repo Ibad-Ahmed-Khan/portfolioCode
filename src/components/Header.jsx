@@ -1,7 +1,8 @@
-import { Box, Flex, SimpleGrid, Text } from "@chakra-ui/react";
+import { Box, Flex, SimpleGrid, Text, keyframes } from "@chakra-ui/react";
 import { useState } from "react";
-import { FaHamburger, FaWindowClose } from "react-icons/fa";
+import { FaHamburger, FaMoon, FaSun, FaWindowClose } from "react-icons/fa";
 import { Link as RouterLink } from "react-router-dom";
+import useStore from "../Zustand";
 
 const Header = () => {
   const links = [
@@ -25,16 +26,37 @@ const Header = () => {
     });
   };
 
+  const { toggle, handleToggle, handleColor, color, bg } = useStore();
+
+  const crazyAnimateBox = keyframes`
+  0%{  
+    border-top: 2px;
+    
+  }
+  25% { 
+    border-right: 2px;
+  }
+  50% { 
+    border-bottom: 2px;
+  }
+  100% { 
+    border-left: 2px;
+  }
+`;
+
   return (
     <SimpleGrid
       pos="fixed"
       top="0"
+      w="99vw"
       zIndex="9999"
-      bg="#fff"
       alignItems="center"
       columns="2"
+      color={color}
+      bg={bg}
+      transition="all .4s ease-in"
+      transformOrigin="left"
       p="4"
-      w="full"
     >
       <Flex align="center">
         <RouterLink to="/" fontWeight="500">
@@ -58,31 +80,114 @@ const Header = () => {
         align="center"
         justify="end"
         textTransform="capitalize"
+        // border="4px solid red"
       >
-        <Flex w="50%" align="center" justify="space-between">
+        <Flex w="60%" align="center" justify="space-evenly">
           {links.map((item, index) => {
             return (
               <RouterLink onClick={scrollToTop} key={index} to={item.to}>
-                {item.link}
+                <Text
+                  _hover={{
+                    ".bar": {
+                      w: "full",
+                    },
+                  }}
+                >
+                  <Box
+                    transition="all .2s ease-in"
+                    className="bar"
+                    bg="#6e72d3"
+                    w="0px"
+                    h="2px"
+                  />
+                  {item.link}
+                </Text>
               </RouterLink>
             );
           })}
+          <Flex
+            display={{ base: "none", lg: "flex" }}
+            align="center"
+            justify="center"
+            pos="relative"
+            borderTop={`3px solid ${color} `}
+            transition="all .2s ease-in"
+            _hover={{ color: "#6e72d3", borderTop: "3px solid #6e72d3" }}
+            borderRadius="50%"
+          >
+            <Box
+              as={FaMoon}
+              fontSize="1.3rem"
+              m="0.4rem"
+              onClick={() => {
+                handleToggle();
+              }}
+              transform={toggle ? "scale(0)" : "scale(1)"}
+              cursor="pointer"
+              transition="all .2s ease-in "
+            ></Box>
+            <Box
+              as={FaSun}
+              fontSize="1.3rem"
+              pos="absolute"
+              // left="0"
+              onClick={() => {
+                handleToggle();
+              }}
+              transform={toggle ? "scale(1)" : "scale(0)"}
+              cursor="pointer"
+              transition="all .2s ease-in "
+            />
+          </Flex>
         </Flex>
       </Flex>
 
       {/* Mobile version */}
+
       <Flex
         display={{ base: "flex", md: "flex", lg: "none", xl: "none" }}
         align="center"
         justify="end"
+        gap="2rem"
         textTransform="capitalize"
       >
+        <Flex
+          display={{ base: "flex", lg: "none" }}
+          align="center"
+          justify="center"
+          pos="relative"
+          borderTop={`3px solid ${color} `}
+          transition="all .2s ease-in"
+          _hover={{ color: "#6e72d3", borderTop: "3px solid #6e72d3" }}
+          borderRadius="50%"
+        >
+          <Box
+            as={FaMoon}
+            fontSize="1.5rem"
+            m="0.4rem"
+            // pos="absolute"
+            onClick={handleToggle}
+            transform={toggle ? "scale(0)" : "scale(1)"}
+            cursor="pointer"
+            transition="all .2s ease-in"
+          />
+          <Box
+            as={FaSun}
+            fontSize="1.5rem"
+            pos="absolute"
+            onClick={handleToggle}
+            transform={toggle ? "scale(1)" : "scale(0)"}
+            cursor="pointer"
+            transition="all .2s ease-in"
+          />
+        </Flex>
         <FaHamburger
           onClick={handleHamburger}
           fontSize="1.7rem"
           cursor="pointer"
         />
       </Flex>
+
       <Box
         transform={isOpen ? "scale(1,1)" : "scale(0,1)"}
         transition="all .4s ease-in-out"

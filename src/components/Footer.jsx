@@ -6,9 +6,8 @@ const Footer = () => {
     <Flex
       align="center"
       justify="space-between"
-      w="99vw"
       color="#fff"
-      bg="#000"
+      bg="#121212"
       p="4"
       direction={{ base: "column", md: "row" }}
     >

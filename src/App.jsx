@@ -11,21 +11,23 @@ import Footer from "./components/Footer";
 import Loader from "./components/Loader";
 import Drawer from "./components/Courses";
 import Courses from "./components/Courses";
+import useStore from "./Zustand";
+import OpeingBar from "./components/OpeingBar";
 
 function App() {
   const [loading, setLoading] = useState(true);
 
+  const { toggle, handleToggle, handleColor, color, bg } = useStore();
   useEffect(() => {
-    // Simulate a loading delay
     setTimeout(() => {
       setLoading(false);
-    }, 2000); // Change this duration to fit your needs
+    }, 2000);
   }, []);
 
   return (
     <>
       {loading ? (
-        <Loader /> // Show loader while loading is true
+        <Loader />
       ) : (
         <motion.section
           initial={{ opacity: 0 }}
@@ -35,7 +37,7 @@ function App() {
           <Flex
             flexDirection="column"
             minH="100vh"
-            w="99vw"
+            w={{ base: "100vw", lg: "99vw" }}
             style={{
               fontFamily: "Kanit, sans-serif",
               fontWeight: "400",
@@ -44,13 +46,16 @@ function App() {
             <BrowserRouter>
               <Flex
                 flex="1"
-                w="99vw"
                 align="center"
                 justify="center"
                 flexDirection="column"
                 paddingInline={{ base: "2rem", md: "2rem", lg: "10rem" }}
+                color={color}
+                bg={bg}
+                transition="all .4s ease-in"
               >
                 <Header />
+                {/* <OpeingBar /> */}
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/about" element={<About />} />

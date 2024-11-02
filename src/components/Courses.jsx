@@ -70,36 +70,43 @@ const Courses = () => {
         flexDirection="column"
         justify="center"
         align={{ base: "center", md: "center", lg: "start", xl: "start" }}
+        gap="6rem"
       >
-        <Text
-          style={{
-            fontFamily: "Anton, sans-serif",
-            fontWeight: "400",
-            letterSpacing: "1px",
-          }}
-          textTransform="uppercase"
-          color="blue.300"
-        >
-          Courses & Certificates
-        </Text>
-        <Text
-          fontSize="1.2rem"
-          textAlign={{ base: "center", md: "center", lg: "start", xl: "start" }}
-          style={{
-            fontFamily: "Anton, sans-serif",
-            fontWeight: "400",
-            letterSpacing: "0.5px",
-          }}
-        >
-          Every course offers valuable insights for your journey in tech.
-        </Text>
+        <Flex flexDir="column" align={{ base: "center", lg: "start" }}>
+          <Text
+            style={{
+              fontFamily: "Anton, sans-serif",
+              fontWeight: "400",
+              letterSpacing: "1px",
+            }}
+            textTransform="uppercase"
+            color="blue.300"
+          >
+            Courses & Certificates
+          </Text>
+          <Text
+            fontSize="1.2rem"
+            textAlign={{
+              base: "center",
+              md: "center",
+              lg: "start",
+              xl: "start",
+            }}
+            style={{
+              fontFamily: "Anton, sans-serif",
+              fontWeight: "400",
+              letterSpacing: "0.5px",
+            }}
+          >
+            Every course offers valuable insights for your journey in tech.
+          </Text>
+        </Flex>
         {coursesList.map((course, index) => (
           <Flex
             key={index}
             align="center"
             justify="center"
-            transition="all .4s ease-in-out"
-            gap="2rem"
+            gap={{ base: "0rem", lg: "2rem" }}
             flexDirection={{
               base: "column",
               md: "column",
@@ -114,7 +121,7 @@ const Courses = () => {
               flexDirection="column"
               align="center"
               justify="center"
-              gap="2rem"
+              gap={{ base: "1rem", lg: "2rem" }}
             >
               <Flex align="center" justify="center" gap="1rem">
                 <Heading

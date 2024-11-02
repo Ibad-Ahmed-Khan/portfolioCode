@@ -11,6 +11,7 @@ import {
 import { useState } from "react";
 import { FaNodeJs } from "react-icons/fa";
 import { motion } from "framer-motion";
+import useStore from "../Zustand";
 
 const About = () => {
   const text = ["frontend-web developer"];
@@ -18,6 +19,8 @@ const About = () => {
 
   // setElement();
   console.log(element);
+
+  const { toggle, handleToggle, handleColor, color, bg } = useStore();
 
   return (
     <motion.div
@@ -62,7 +65,7 @@ const About = () => {
               bottom="0"
               right="-15%"
               borderRadius="50%"
-              bg="#fff"
+              bg={bg}
               w={{
                 base: "6rem",
                 md: "6rem",
@@ -75,9 +78,10 @@ const About = () => {
                 lg: "7rem",
                 xl: "7rem",
               }}
-              boxShadow="xl"
+              transition="all .4s ease-in"
+              boxShadow={`0 2px 5px ${color}`}
             >
-              <FaNodeJs />
+              <FaNodeJs color={color} />
             </Flex>
           </Box>
         </Flex>
@@ -116,28 +120,6 @@ const About = () => {
             }}
           >
             A deticated Front-end Developer based in Lahore,Pakistan
-            <Flex
-              display="inline"
-              align="center"
-              justify="center"
-              position="relative"
-              top="0.6rem"
-            >
-              <Img
-                display="inline"
-                w="2rem"
-                src="https://cdn.vectorstock.com/i/1000v/28/82/3d-realistic-colorful-balloon-birthday-vector-26952882.avif"
-                alt="Waving Hand Icon"
-              />
-              <Box
-                position="absolute"
-                bottom="0"
-                left="0"
-                right="0"
-                height="1rem" // Adjust height to cover the unwanted line
-                backgroundColor="white" // Match this to your background color to hide the line
-              />
-            </Flex>
           </Heading>
           <Text
             align={{

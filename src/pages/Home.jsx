@@ -27,6 +27,7 @@ import Project from "./Project";
 import Contact from "./Contact";
 import Courses from "../components/Courses";
 import { useEffect, useState } from "react";
+import useStore from "../Zustand";
 
 const Home = () => {
   const [percentage, setPercentage] = useState(0);
@@ -53,6 +54,8 @@ const Home = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const { color, bg } = useStore();
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -65,10 +68,10 @@ const Home = () => {
           top="0"
           left="0"
           zIndex="9999999999999999999999999"
-          bg="#000"
+          bg="#6e72d3"
           w={`${percentage}%`}
           h="4px"
-          boxShadow="0 2px 5px rgba(0, 0, 0, 0.3)"
+          boxShadow={`0 3px 6px ${color} `}
           transition="all .3s ease-in-out"
         />
         <VStack
@@ -97,28 +100,6 @@ const Home = () => {
                 }}
               >
                 Front-End React Developer
-                <Flex
-                  display="inline"
-                  align="center"
-                  justify="center"
-                  position="relative"
-                  top="0.9rem"
-                >
-                  <Img
-                    display="inline"
-                    w="4rem"
-                    src="https://cdn.vectorstock.com/i/1000v/01/50/waving-hand-icon-gesture-emoji-vector-37870150.avif"
-                    alt="Waving Hand Icon"
-                  />
-                  <Box
-                    position="absolute"
-                    bottom="0"
-                    left="0"
-                    right="0"
-                    height="1.2rem" // Adjust height to cover the unwanted line
-                    backgroundColor="white" // Match this to your background color to hide the line
-                  />
-                </Flex>
               </Heading>
               <Text
                 display="inline-block"
@@ -128,28 +109,6 @@ const Home = () => {
               >
                 Assalam o Alaikum, I am Ibad Ahmed Khan. A passionate Front-end
                 React Developer based in Lahore, Pakistan.
-                <Flex
-                  display="inline"
-                  align="center"
-                  justify="center"
-                  position="relative"
-                  top="0.9rem"
-                >
-                  <Img
-                    display="inline"
-                    w="2rem"
-                    src="https://cdn.vectorstock.com/i/1000v/28/82/3d-realistic-colorful-balloon-birthday-vector-26952882.avif"
-                    alt="Waving Hand Icon"
-                  />
-                  <Box
-                    position="absolute"
-                    bottom="0"
-                    left="0"
-                    right="0"
-                    height="1rem" // Adjust height to cover the unwanted line
-                    backgroundColor="white" // Match this to your background color to hide the line
-                  />
-                </Flex>
               </Text>
               <Flex
                 w="full"
@@ -195,7 +154,13 @@ const Home = () => {
             >
               Tech Stack
             </Text>
-            <Box w="2px" borderRadius="50%" h="1rem" bg="#000" />
+            <Box
+              w="2px"
+              borderRadius="50%"
+              h="1rem"
+              transition="all .4s ease-in"
+              bg={color}
+            />
             <Flex gap="2rem" wrap="wrap" justify="center">
               <FaHtml5 fontSize="2rem" color="#E34F26" />
               <FaCss3Alt fontSize="2rem" color="#1572B6" />
