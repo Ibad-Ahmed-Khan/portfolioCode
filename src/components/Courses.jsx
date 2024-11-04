@@ -21,6 +21,7 @@ import HtmlCourse from "../assets/Courses Imgs/html.jpg"; // Add your HTML cours
 import CssCourse from "../assets/Courses Imgs/css.jpg"; // Add your CSS course image path
 import ResumeCourse from "../assets/Courses Imgs/CanvaResume.jpeg"; // Add your Resume course image path
 import { Link as RouterLink } from "react-router-dom";
+import Pointer from "../assets/pointer.png";
 import { motion } from "framer-motion";
 
 const Courses = () => {
@@ -144,7 +145,7 @@ const Courses = () => {
                 target="_blank" // Optional: Opens in a new tab
                 rel="noopener noreferrer" // Recommended for security reasons
               >
-                Verify me
+                <Text cursor={`url(${Pointer}) , auto`}>Verify me</Text>
               </Link>
             </Flex>
             <RouterLink to={course.liveDemo}>

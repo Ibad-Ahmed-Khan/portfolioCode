@@ -2,6 +2,7 @@ import { Box, Flex, SimpleGrid, Text, keyframes } from "@chakra-ui/react";
 import { useState } from "react";
 import { FaHamburger, FaMoon, FaSun, FaWindowClose } from "react-icons/fa";
 import { Link as RouterLink } from "react-router-dom";
+import Pointer from "../assets/pointer.png";
 import useStore from "../Zustand";
 
 const Header = () => {
@@ -61,6 +62,7 @@ const Header = () => {
       <Flex align="center">
         <RouterLink to="/" fontWeight="500">
           <Text
+            cursor={`url(${Pointer}) , auto`}
             style={{
               fontFamily: "Anton, sans-serif",
               fontWeight: "400",
@@ -87,6 +89,7 @@ const Header = () => {
             return (
               <RouterLink onClick={scrollToTop} key={index} to={item.to}>
                 <Text
+                  cursor={`url(${Pointer}) , auto`}
                   _hover={{
                     ".bar": {
                       w: "full",
@@ -123,7 +126,7 @@ const Header = () => {
                 handleToggle();
               }}
               transform={toggle ? "scale(0)" : "scale(1)"}
-              cursor="pointer"
+              cursor={`url(${Pointer}) , auto`}
               transition="all .2s ease-in "
             ></Box>
             <Box
@@ -135,7 +138,7 @@ const Header = () => {
                 handleToggle();
               }}
               transform={toggle ? "scale(1)" : "scale(0)"}
-              cursor="pointer"
+              cursor={`url(${Pointer}) , auto`}
               transition="all .2s ease-in "
             />
           </Flex>
@@ -168,7 +171,7 @@ const Header = () => {
             // pos="absolute"
             onClick={handleToggle}
             transform={toggle ? "scale(0)" : "scale(1)"}
-            cursor="pointer"
+            cursor={`url(${Pointer}) , auto`}
             transition="all .2s ease-in"
           />
           <Box
@@ -177,14 +180,14 @@ const Header = () => {
             pos="absolute"
             onClick={handleToggle}
             transform={toggle ? "scale(1)" : "scale(0)"}
-            cursor="pointer"
+            cursor={`url(${Pointer}) , auto`}
             transition="all .2s ease-in"
           />
         </Flex>
         <FaHamburger
           onClick={handleHamburger}
           fontSize="1.7rem"
-          cursor="pointer"
+          cursor={`url(${Pointer}) , auto`}
         />
       </Flex>
 
@@ -206,7 +209,7 @@ const Header = () => {
             onClick={handleHamburger}
             fontSize="1.7rem"
             color="red"
-            cursor="pointer"
+            cursor={`url(${Pointer}) , auto`}
           />
         </Flex>
         <Flex

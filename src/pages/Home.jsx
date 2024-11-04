@@ -20,12 +20,14 @@ import {
   FaReact,
 } from "react-icons/fa";
 import { SiTailwindcss, SiChakraui } from "react-icons/si";
+import Pointer from "../assets/pointer.png";
 import { BiCube } from "react-icons/bi";
 import HomeImg from "../components/HomeImg";
 import About from "./About";
 import Project from "./Project";
 import Contact from "./Contact";
 import Courses from "../components/Courses";
+// import Pointer from "../assets/pointer.png";
 import { useEffect, useState } from "react";
 import useStore from "../Zustand";
 
@@ -121,10 +123,14 @@ const Home = () => {
                   to="https://www.linkedin.com/in/ibad-ahmed-khan-a98b48289/"
                   isExternal
                 >
-                  <FaLinkedin fontSize="1.5rem" />
+                  <Text cursor={`url(${Pointer}) , auto`}>
+                    <FaLinkedin fontSize="1.5rem" />
+                  </Text>
                 </Link>
                 <Link to="https://github.com/Ibad-Ahmed-Khan" isExternal>
-                  <FaGithub fontSize="1.5rem" />
+                  <Text cursor={`url(${Pointer}) , auto`}>
+                    <FaGithub fontSize="1.5rem" />
+                  </Text>
                 </Link>
               </Flex>
             </VStack>

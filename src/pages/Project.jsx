@@ -11,6 +11,7 @@ import FoodPanda from "../assets/foodPanda.png";
 import Ecommerce from "../assets/ecommerce.png";
 import Crypto from "../assets/crypto.png";
 import AdvanceWork from "../assets/advanceWork.png";
+import Pointer from "../assets/pointer.png";
 import { Link as RouterLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FaShoppingCart, FaBitcoin, FaUtensils, FaTasks } from "react-icons/fa"; // Import React Icons
@@ -140,10 +141,10 @@ const Project = () => {
               <Text color="gray"> {project.summary} </Text>
               <Flex align="center" justify="center" gap="2rem">
                 <RouterLink target="_blank" to={project.codelink}>
-                  Code
+                  <Text cursor={`url(${Pointer}) , auto`}>Code</Text>
                 </RouterLink>
                 <RouterLink target="_blank" to={project.liveDemo}>
-                  Live demo
+                  <Text cursor={`url(${Pointer}) , auto`}>Live demo</Text>
                 </RouterLink>
               </Flex>
             </Flex>

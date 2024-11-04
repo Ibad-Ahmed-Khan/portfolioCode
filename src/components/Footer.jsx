@@ -1,5 +1,6 @@
 import { Flex, Text, Link, Icon } from "@chakra-ui/react";
 import { FaLinkedin, FaGithub, FaTwitter } from "react-icons/fa";
+import Pointer from "../assets/pointer.png";
 
 const Footer = () => {
   return (
@@ -19,13 +20,19 @@ const Footer = () => {
           href="https://www.linkedin.com/in/ibad-ahmed-khan-a98b48289/"
           isExternal
         >
-          <Icon as={FaLinkedin} boxSize={6} />
+          <Text cursor={`url(${Pointer}) , auto`}>
+            <FaLinkedin fontSize="1.5rem" />
+          </Text>
         </Link>
         <Link href="https://github.com/Ibad-Ahmed-Khan" isExternal>
-          <Icon as={FaGithub} boxSize={6} />
+          <Text cursor={`url(${Pointer}) , auto`}>
+            <FaGithub fontSize="1.5rem" />
+          </Text>
         </Link>
         <Link href="https://twitter.com/yourprofile" isExternal>
-          <Icon as={FaTwitter} boxSize={6} />
+          <Text cursor={`url(${Pointer}) , auto`}>
+            <FaTwitter fontSize="1.5rem" />
+          </Text>
         </Link>
       </Flex>
     </Flex>
