@@ -1,6 +1,8 @@
 import React from "react";
 import { Box, Flex } from "@chakra-ui/react";
+import Loader1 from "../assets/Loader1.png";
 import { motion } from "framer-motion";
+import CustomCursor from "./CustomCursor";
 
 // Animation variants for spinning and scaling
 const spinVariants = {
@@ -36,8 +38,11 @@ const Loader = () => {
       position="relative"
       bg="gray.900"
       overflow="hidden"
+      cursor="none"
     >
       {/* Rotating Rings */}
+
+      <CustomCursor />
       <Box
         as={motion.div}
         variants={spinVariants}
