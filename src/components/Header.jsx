@@ -7,11 +7,11 @@ import useStore from "../Zustand";
 
 const Header = () => {
   const links = [
-    { link: "home", to: "/" },
-    { link: "about", to: "/about" },
-    { link: "project", to: "/project" },
-    { link: "courses", to: "/courses" },
-    { link: "contact", to: "/contact" },
+    { id: 0, link: "home", to: "/" },
+    { id: 1, link: "about", to: "/about" },
+    { id: 2, link: "project", to: "/project" },
+    { id: 3, link: "courses", to: "/courses" },
+    { id: 4, link: "contact", to: "/contact" },
   ];
 
   const [isOpen, setIsOpen] = useState(false);
@@ -28,22 +28,12 @@ const Header = () => {
   };
 
   const { toggle, handleToggle, handleColor, color, bg } = useStore();
-
-  const crazyAnimateBox = keyframes`
-  0%{  
-    border-top: 2px;
-    
-  }
-  25% { 
-    border-right: 2px;
-  }
-  50% { 
-    border-bottom: 2px;
-  }
-  100% { 
-    border-left: 2px;
-  }
-`;
+  const newTab = JSON.parse(localStorage.getItem("1"));
+  const [tab, setTab] = useState(newTab);
+  const handleTab = (index) => {
+    localStorage.setItem("1", JSON.stringify(index));
+    setTab(index);
+  };
 
   return (
     <SimpleGrid
@@ -68,7 +58,11 @@ const Header = () => {
               fontWeight: "400",
               letterSpacing: "1px",
             }}
-            onClick={scrollToTop}
+            onClick={() => {
+              scrollToTop();
+              setTab(0);
+              localStorage.setItem("1", JSON.stringify(0));
+            }}
             fontSize="1rem"
           >
             Ibad Ahmed.dev
@@ -82,26 +76,27 @@ const Header = () => {
         align="center"
         justify="end"
         textTransform="capitalize"
-        // border="4px solid red"
       >
         <Flex w="60%" align="center" justify="space-evenly">
           {links.map((item, index) => {
             return (
-              <RouterLink onClick={scrollToTop} key={index} to={item.to}>
-                <Text
-                  cursor={`url(${Pointer}) , auto`}
-                  _hover={{
-                    ".bar": {
-                      w: "full",
-                    },
-                  }}
-                >
+              <RouterLink
+                onClick={() => {
+                  scrollToTop();
+                  handleTab(index);
+                }}
+                key={index}
+                to={item.to}
+              >
+                <Text pos="relative" cursor={`url(${Pointer}) , auto`}>
                   <Box
-                    transition="all .2s ease-in"
-                    className="bar"
-                    bg="#6e72d3"
-                    w="0px"
-                    h="2px"
+                    pos="absolute"
+                    top="0"
+                    transition="all .4s ease-in"
+                    w="full"
+                    h="3px"
+                    bg={color}
+                    transform={index == tab ? "scale(1,1)" : "scale(1,0)"}
                   />
                   {item.link}
                 </Text>
@@ -115,7 +110,7 @@ const Header = () => {
             pos="relative"
             borderTop={`3px solid ${color} `}
             transition="all .2s ease-in"
-            _hover={{ color: "#6e72d3", borderTop: "3px solid #6e72d3" }}
+            _hover={{ color: { color }, borderTop: "3px solid #6e72d3" }}
             borderRadius="50%"
           >
             <Box
@@ -161,7 +156,7 @@ const Header = () => {
           pos="relative"
           borderTop={`3px solid ${color} `}
           transition="all .2s ease-in"
-          _hover={{ color: "#6e72d3", borderTop: "3px solid #6e72d3" }}
+          _hover={{ color: { color }, borderTop: "3px solid #6e72d3" }}
           borderRadius="50%"
         >
           <Box
@@ -224,13 +219,31 @@ const Header = () => {
             return (
               <RouterLink
                 onClick={() => {
-                  handleHamburger();
                   scrollToTop();
+                  handleHamburger();
+                  handleTab(index);
                 }}
                 key={index}
                 to={item.to}
               >
-                {item.link}
+                <Text cursor={`url(${Pointer}) , auto`}>
+                  <Box
+                    transition="all .4s ease-in"
+                    w="full"
+                    h="3px"
+                    bg="#fff"
+                    transform={index == tab ? "scale(1,1)" : "scale(1,0)"}
+                  />
+                  {item.link}
+                </Text>
+                <Box
+                  pos="absolute"
+                  left="0"
+                  top="0"
+                  bg="#000"
+                  w="full"
+                  h="3px"
+                />
               </RouterLink>
             );
           })}

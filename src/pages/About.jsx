@@ -18,7 +18,6 @@ const About = () => {
   const [element, setElement] = useState(text.toString("").split(""));
 
   // setElement();
-  console.log(element);
 
   const { toggle, handleToggle, handleColor, color, bg } = useStore();
 

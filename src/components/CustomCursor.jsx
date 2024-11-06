@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Loader1 from "../assets/Loader1.png";
+import { Box } from "@chakra-ui/react";
 
 const spinVariants = {
   animate: {
@@ -29,20 +30,22 @@ const CustomCursor = () => {
   }, []);
 
   return (
-    <motion.div
-      style={{
-        position: "fixed",
-        top: position.y,
-        left: position.x,
-        width: "24px", // Resizing the cursor
-        height: "24px",
-        backgroundImage: `url(${Loader1})`,
-        backgroundSize: "cover",
-        pointerEvents: "none",
-      }}
-      variants={spinVariants}
-      animate="animate"
-    />
+    <Box display={{ base: "none", lg: "block" }}>
+      <motion.div
+        style={{
+          position: "fixed",
+          top: position.y,
+          left: position.x,
+          width: "24px", // Resizing the cursor
+          height: "24px",
+          backgroundImage: `url(${Loader1})`,
+          backgroundSize: "cover",
+          pointerEvents: "none",
+        }}
+        variants={spinVariants}
+        animate="animate"
+      />
+    </Box>
   );
 };
 
