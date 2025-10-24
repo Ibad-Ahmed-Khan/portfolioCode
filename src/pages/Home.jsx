@@ -5,8 +5,7 @@ import {
   SimpleGrid,
   Text,
   VStack,
-  IconButton,
-  Img,
+  Tooltip,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
@@ -18,16 +17,23 @@ import {
   FaCss3Alt,
   FaJsSquare,
   FaReact,
+  FaBootstrap,
+  FaGitAlt,
+  FaFigma,
 } from "react-icons/fa";
-import { SiTailwindcss, SiChakraui } from "react-icons/si";
+import {
+  SiTailwindcss,
+  SiChakraui,
+  SiNextdotjs,
+  SiRedux,
+} from "react-icons/si";
+import { TbApi } from "react-icons/tb";
 import Pointer from "../assets/pointer.png";
-import { BiCube } from "react-icons/bi";
 import HomeImg from "../components/HomeImg";
 import About from "./About";
 import Project from "./Project";
 import Contact from "./Contact";
 import Courses from "../components/Courses";
-// import Pointer from "../assets/pointer.png";
 import { useEffect, useState } from "react";
 import useStore from "../Zustand";
 
@@ -36,28 +42,62 @@ const Home = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollTop = window.scrollY; // Current scroll position from the top
-      const windowHeight = window.innerHeight; // Height of the viewport
-      const documentHeight = document.documentElement.scrollHeight; // Total height of the document
+      const scrollTop = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
 
-      // Calculate the percentage of the document that has been scrolled
-      const totalScrollableHeight = documentHeight - windowHeight; // Total height available to scroll
+      const totalScrollableHeight = documentHeight - windowHeight;
       const newPercentage = (scrollTop / totalScrollableHeight) * 100;
 
-      // Set the rounded percentage
       setPercentage(Math.round(newPercentage));
-      console.log(Math.round(newPercentage)); // Log the rounded percentage
+      console.log(Math.round(newPercentage));
     };
 
     window.addEventListener("scroll", handleScroll);
 
-    // Cleanup function to remove the event listener when the component unmounts
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   const { color, bg } = useStore();
+
+  // Tech stack data with only available icons
+  const techStack = [
+    { icon: <FaHtml5 fontSize="2rem" />, name: "HTML5", color: "#E34F26" },
+    { icon: <FaCss3Alt fontSize="2rem" />, name: "CSS3", color: "#1572B6" },
+    {
+      icon: <FaJsSquare fontSize="2rem" />,
+      name: "JavaScript",
+      color: "#F7DF1E",
+    },
+    { icon: <FaReact fontSize="2rem" />, name: "React", color: "#61DAFB" },
+    {
+      icon: <SiNextdotjs fontSize="2rem" />,
+      name: "Next.js",
+      color: "#000000",
+    },
+    { icon: <SiRedux fontSize="2rem" />, name: "Redux", color: "#764ABC" },
+    {
+      icon: <SiTailwindcss fontSize="2rem" />,
+      name: "Tailwind CSS",
+      color: "#38B2AC",
+    },
+    {
+      icon: <SiChakraui fontSize="2rem" />,
+      name: "Chakra UI",
+      color: "#319795",
+    },
+    {
+      icon: <FaBootstrap fontSize="2rem" />,
+      name: "Bootstrap",
+      color: "#7952B3",
+    },
+    { icon: <TbApi fontSize="2rem" />, name: "REST APIs", color: "#FF6B6B" },
+    { icon: <FaGitAlt fontSize="2rem" />, name: "Git", color: "#F05032" },
+    { icon: <FaFigma fontSize="2rem" />, name: "Figma", color: "#F24E1E" },
+  ];
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -111,6 +151,10 @@ const Home = () => {
               >
                 Assalam o Alaikum, I am Ibad Ahmed Khan. A passionate Front-end
                 React Developer based in Lahore, Pakistan.
+                <br />
+                <br />
+                Specializing in modern web technologies with expertise in React
+                ecosystem, state management, responsive design.
               </Text>
               <Flex
                 w="full"
@@ -143,6 +187,8 @@ const Home = () => {
               </Flex>
             </motion.section>
           </SimpleGrid>
+
+          {/* Enhanced Tech Stack Section */}
           <Flex
             w="full"
             align="center"
@@ -158,7 +204,7 @@ const Home = () => {
               }}
               fontSize={{ base: "lg", md: "xl" }}
             >
-              Tech Stack
+              Tech Stack & Expertise
             </Text>
             <Box
               w="2px"
@@ -167,13 +213,19 @@ const Home = () => {
               transition="all .4s ease-in"
               bg={color}
             />
-            <Flex gap="2rem" wrap="wrap" justify="center">
-              <FaHtml5 fontSize="2rem" color="#E34F26" />
-              <FaCss3Alt fontSize="2rem" color="#1572B6" />
-              <FaJsSquare fontSize="2rem" color="#F7DF1E" />
-              <FaReact fontSize="2rem" color="#61DAFB" />
-              <SiTailwindcss fontSize="2rem" color="#38B2AC" />
-              <SiChakraui fontSize="2rem" color="#319795" />
+            <Flex gap="1.5rem" wrap="wrap" justify="center" maxW="800px">
+              {techStack.map((tech, index) => (
+                <Tooltip key={index} label={tech.name} placement="top" hasArrow>
+                  <Box
+                    cursor="pointer"
+                    transition="all 0.3s ease"
+                    _hover={{ transform: "scale(1.2)" }}
+                    style={{ color: tech.color }}
+                  >
+                    {tech.icon}
+                  </Box>
+                </Tooltip>
+              ))}
             </Flex>
           </Flex>
         </VStack>

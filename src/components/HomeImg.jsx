@@ -1,5 +1,5 @@
 import { VStack, Box, keyframes, Image } from "@chakra-ui/react";
-import Ibad from "../assets/Courses Imgs/ibad.jpg";
+import Ibad from "../assets/Courses Imgs/one.jpeg";
 import useStore from "../Zustand";
 // import useStore from "../Zustand";
 
@@ -33,9 +33,10 @@ function HomeImg() {
       border="1px solid #000"
       animation={`${crazyAnimateBox} 12s ease-in-out infinite`}
       w="14rem"
-      h="14rem"
+      maxH="17rem"
       src={Ibad}
       objectFit="cover"
+      objectPosition="center 20%"
     />
   );
 }
