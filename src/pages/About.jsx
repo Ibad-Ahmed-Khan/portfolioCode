@@ -156,14 +156,14 @@ const About = () => {
                         {skill.name}
                       </Text>
                     </HStack>
-                    <Text fontSize="sm" color="gray.400">
+                    <Text fontSize="sm" color="gray.300">
                       {skill.level}%
                     </Text>
                   </Flex>
                   <Progress
                     value={skill.level}
                     size="sm"
-                    colorScheme="blue"
+                    colorScheme="gray"
                     borderRadius="full"
                     bg="gray.200"
                   />
@@ -219,13 +219,13 @@ const About = () => {
               lg: "start",
               xl: "start",
             }}
-            color="gray.400"
+            color="gray.300"
             fontWeight="200"
             fontSize="lg"
             lineHeight="1.8"
           >
             I'm a passionate{" "}
-            <Badge colorScheme="blue" fontSize="0.8em">
+            <Badge colorScheme="black" fontSize="0.8em">
               Frontend Developer
             </Badge>{" "}
             with expertise in modern web technologies. I specialize in building
@@ -250,17 +250,12 @@ const About = () => {
                 _hover={{ boxShadow: "md", transform: "translateY(-2px)" }}
                 transition="all 0.3s"
               >
-                <Text fontWeight="bold" mb="2" color="blue.600">
+                <Text fontWeight="bold" mb="2" color="black">
                   {area.title}
                 </Text>
                 <Flex flexWrap="wrap" gap="2">
                   {area.items.map((item, itemIndex) => (
-                    <Badge
-                      key={itemIndex}
-                      colorScheme="blue"
-                      variant="subtle"
-                      fontSize="0.7em"
-                    >
+                    <Badge key={itemIndex} variant="subtle" fontSize="0.7em">
                       {item}
                     </Badge>
                   ))}
@@ -273,9 +268,9 @@ const About = () => {
           <Box
             p="4"
             borderRadius="lg"
-            bg="blue.50"
+            bg="green.50"
             borderLeft="4px solid"
-            borderColor="blue.400"
+            borderColor="black"
             w="full"
           >
             <Text fontWeight="bold" mb="2">
